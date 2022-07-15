@@ -110,16 +110,25 @@ summary(data2)
 
 #### predict model.3 at target point
 ```{r}
-predict.lm(data2,)
+predict.lm(data2,newdat=data.frame(GRIP =94, ARM = 88))
+print(predictSIM)
 ```
-
-  
 
 ## Comparing nested models ANOVA Test
 
 ### Model.1 vs Model.3
+```{r}
 anova(lmr,data2)
+```
+
 ### Model.2 vs Model.3
-anova(,data2)
+```{r}
+anova(grip,data2)
+```
+
 ## Informally compare Model.1 with model.2
+
+
+
+
 
