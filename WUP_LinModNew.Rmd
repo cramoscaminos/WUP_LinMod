@@ -86,7 +86,7 @@ The scatter plot for SIM~GRIP shows a positive linear correlation.
 cor(SIMS~GRIP,data=data)
 ```
 
-The correlation for SIMS~GRIP is 0.6398 slightly smaller than the correlation between SIMS~ARM which is 0.686. 
+The correlation for SIMS~GRIP is 0.6398458 slightly smaller than the correlation between SIMS~ARM which is 0.686073. 
 
 ### Inferential  (Build model.2)
 ```{r}
@@ -131,7 +131,8 @@ Both ARM at 0.6860073 and GRIP at 0.6398458 show a positive correlation and clos
 predict.lm(data2, newdata =data.frame(GRIP =94, ARM = 88))
 ```
   
-
+The target point is -5.2842 
+  
 ## Comparing nested models ANOVA Test
 
 ### Model.1 vs Model.3
@@ -146,7 +147,10 @@ anova(grip,data2)
   
 ## Informally compare Model.1 with model.2
 
-Model 1 and model2 appear similar in the positive slope direction for the Standardized Residual Normal Q-Q plot.  The remaining plots appear to be closer to a zero slope.   
+Model 1 and model2 appear similar in the positive slope direction for the Standardized Residual Normal Q-Q plot. The remaining plots appear to be closer to a zero slope.   
+The SIMS~GRIP correlation is 0.6398458 which is smaller than the SIMS~ARM correlation of 0.6860073 a difference of 0.0461615. 
+Both model1 and model2 have residuals degree of freedom of 145 
 
+Model1 has a residual sum of squares of 217.88. Model2  has a residual sum of squares  243.07. The difference is 25.19. From this I conclude that  Model1 has less errors is a better model than model2. 
 
 
