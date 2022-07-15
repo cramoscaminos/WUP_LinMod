@@ -37,12 +37,14 @@ lmr =lm(SIMS~ARM,data=data)
 abline (lmr)
 ```
 
+The scatter plot for SIMS~ARMS shows a positive linear correlation.
 
 ### Numerical results
 ```{r}
 cor(SIMS~ARM,data=data)
 ```
 
+The correlation is 0.6860 close to 0.07. 
 
 ### Inferential  (Build model.1)
 ```{r}
@@ -50,6 +52,7 @@ summary(lmr)
 newdata=c(GRIP=94, ARM=88)
 ```
 
+P-value 0.0000000000000002 and adjusted R-Sqaured is 0.467.
 
 #### Predict at target point
 ```{r}
@@ -57,12 +60,14 @@ predictSIM = predict.lm(lmr, newdata=data.frame(GRIP = 94, ARM = 88))
 print(predictSIM)
 ```
 
+Predicted target point is postive 0.7.
 
 #### scatterplot with model fit
 ```{r}
 plot(lmr)
 ```
-
+  
+The standardized residuals graph shows a positive correlation. The remaining plot graphs run almost horizontal, but not a zero slope. 
 
 ## Model 2 SIM~GRIP 
 
@@ -72,29 +77,36 @@ plot(SIMS~ARM,data=data)
 grip =lm(SIMS~ARM,data=data)
 abline (grip)
 ```
+  
+The scatter plot for SIM~GRIP shows a positive linear correlation. 
 
 ### Numerical results 
 ```{r}
-cor(SIMS~ARM,data=data)
+cor(SIMS~GRIP,data=data)
 ```
+
+The correlation for SIMS~GRIP is 0.6398 slightly smaller than the correlation between SIMS~ARM. 
 
 ### Inferential  (Build model.2)
 ```{r}
 summary(grip)
 newdata=c(GRIP=94, ARM=88)
 ``` 
+  
+P-value 0.0000000000000002 and adjusted R-Sqaured is 0.467.
 
 #### predict model.2 at target point
 ```{r}
 predictSIM = predict.lm(grip, newdata=data.frame(GRIP = 94, ARM = 88))
 print(predictSIM)
 ```
-
-
+  
 #### now add the model fit to our plot for model.2
 ```{r}
 plot(grip)
 ```
+  
+The standardized residuals graph shows a positive correlation. The remaining plot graphs run almost horizontal, but not a zero slope. 
 
 
 ## Model 3 SIM~ARM+GRIP 
@@ -104,8 +116,9 @@ plot(grip)
 data2=lm(SIMS~ARM+GRIP, data+data)
 summary(data2)
 ```
-
   
+P-value 0.0000000000000002 and adjusted R-Sqaured is 0.5358
+
 ### Inferential  (Build 2-dimentional model.3)
 
 #### predict model.3 at target point
@@ -113,6 +126,8 @@ summary(data2)
 predict.lm(data2,newdat=data.frame(GRIP =94, ARM = 88))
 print(predictSIM)
 ```
+  
+The prediction of the scatter plot is positive.
 
 ## Comparing nested models ANOVA Test
 
@@ -125,7 +140,7 @@ anova(lmr,data2)
 ```{r}
 anova(grip,data2)
 ```
-
+  
 ## Informally compare Model.1 with model.2
 
 
