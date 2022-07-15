@@ -44,15 +44,16 @@ The scatter plot for SIMS~ARMS shows a positive linear correlation.
 cor(SIMS~ARM,data=data)
 ```
 
-The correlation is 0.6860 close to 0.07. 
+The correlation is 0.6860  
 
 ### Inferential  (Build model.1)
 ```{r}
 summary(lmr)
 newdata=c(GRIP=94, ARM=88)
 ```
-
-P-value 0.00000000000000022 and adjusted R-Sqaured is 0.467.
+  
+Residuals show 1.226 on 145 degrees of freedom.
+P-value 0.00000000000000022  Adjusted R-Squared is 0.467 
 
 #### Predict at target point
 ```{r}
@@ -60,14 +61,14 @@ predictSIM = predict.lm(lmr, newdata=data.frame(GRIP = 94, ARM = 88))
 print(predictSIM)
 ```
 
-Predicted target point is positive 0.7.
+Predicted target point is positive 0.71.
 
 #### scatterplot with model fit
 ```{r}
 plot(lmr)
 ```
   
-The standardized residuals graph shows a positive correlation. The remaining plot graphs run almost horizontal, but not a zero slope. 
+The standardized residuals Normal Q-Q graph shows a positive correlation. The remaining plot graphs run almost horizontal, or at zero slope. 
 
 ## Model 2 SIM~GRIP 
 
@@ -85,7 +86,7 @@ The scatter plot for SIM~GRIP shows a positive linear correlation.
 cor(SIMS~GRIP,data=data)
 ```
 
-The correlation for SIMS~GRIP is 0.6398 slightly smaller than the correlation between SIMS~ARM. 
+The correlation for SIMS~GRIP is 0.6398 slightly smaller than the correlation between SIMS~ARM which is 0.686. 
 
 ### Inferential  (Build model.2)
 ```{r}
@@ -93,7 +94,8 @@ summary(grip)
 newdata=c(GRIP=94, ARM=88)
 ``` 
   
-P-value 0.0000000000000002 and adjusted R-Sqaured is 0.467.
+Residuals show 1.295 slightly higher than GRIP~ARM.  
+P-value 0.00000000000000022 and adjusted R-Sqaured is 0.4053.
 
 #### predict model.2 at target point
 ```{r}
@@ -101,13 +103,14 @@ predictSIM = predict.lm(grip, newdata=data.frame(GRIP = 94, ARM = 88))
 print(predictSIM)
 ```
   
+The target point is -0.5361 
+
 #### now add the model fit to our plot for model.2
 ```{r}
 plot(grip)
 ```
   
-The standardized residuals graph shows a positive correlation. The remaining plot graphs run almost horizontal, but not a zero slope. 
-
+The standardized residuals Normal Q-Q graph shows a positive correlation. The remaining plot graphs show a negative slope.  
 
 ## Model 3 SIM~ARM+GRIP 
 
@@ -116,18 +119,18 @@ The standardized residuals graph shows a positive correlation. The remaining plo
 data2=lm(SIMS~ARM+GRIP, data+data)
 summary(data2)
 ```
-  
+The residual is 2.288 a number significantly higher than SIM~ARM and SIM~GRIP; however the Adjusted R-Squared is the lowest when compared to Model1 and Model2.  
 P-value 0.0000000000000002 and adjusted R-Sqaured is 0.5358
 
 ### Inferential  (Build 2-dimentional model.3)
-
+  
+Both ARM at 0.6860073 and GRIP at 0.6398458 show a positive correlation and close in value. 
+  
 #### predict model.3 at target point
 ```{r}
-predict.lm(data2,newdat=data.frame(GRIP =94, ARM = 88))
-print(predictSIM)
+predict.lm(data2, newdata =data.frame(GRIP =94, ARM = 88))
 ```
   
-The prediction of the scatter plot is positive.
 
 ## Comparing nested models ANOVA Test
 
@@ -143,7 +146,7 @@ anova(grip,data2)
   
 ## Informally compare Model.1 with model.2
 
-
+Model 1 and model2 appear similar in the positive slope direction for the Standardized Residual Normal Q-Q plot.  The remaining plots appear to be closer to a zero slope.   
 
 
 
