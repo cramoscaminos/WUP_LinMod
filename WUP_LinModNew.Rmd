@@ -52,7 +52,7 @@ summary(lmr)
 newdata=c(GRIP=94, ARM=88)
 ```
 
-P-value 0.0000000000000002 and adjusted R-Sqaured is 0.467.
+P-value 0.00000000000000022 and adjusted R-Sqaured is 0.467.
 
 #### Predict at target point
 ```{r}
@@ -60,7 +60,7 @@ predictSIM = predict.lm(lmr, newdata=data.frame(GRIP = 94, ARM = 88))
 print(predictSIM)
 ```
 
-Predicted target point is postive 0.7.
+Predicted target point is positive 0.7.
 
 #### scatterplot with model fit
 ```{r}
@@ -73,8 +73,8 @@ The standardized residuals graph shows a positive correlation. The remaining plo
 
 ### Now add in scatterplot
 ```{r}
-plot(SIMS~ARM,data=data)
-grip =lm(SIMS~ARM,data=data)
+plot(SIMS~GRIP,data=data)
+grip =lm(SIMS~GRIP,data=data)
 abline (grip)
 ```
   
