@@ -15,9 +15,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Read about the data from the website where it is staged.  Then form three regression models; Model1 is SIMS~ARM, Model2 is SIMS~GRIP, and Model3 is SIMS~ARM+GRIP. For each model find a 95% prediction interval of SIMS given a value of 94  for GRIP and 88 for ARM. Compare Model1 with Model3 using anova. Write it up in a markdown document, push the project up to your github account and submit it back to canvas as link. 
 
- 
-
-
 ```{r include=FALSE}
 require(tidyverse)
 require(tigerstats)
@@ -31,53 +28,98 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 
 ```
 
-## Model 1 SIM~ARMS
+## Model 1 SIM~ARMS 
 
-### scatterplot
+### scatterplot 
+```{r}
+plot(SIMS~ARM,data=data)
+lmr =lm(SIMS~ARM,data=data)
+abline (lmr)
+```
+
 
 ### Numerical results
+```{r}
+cor(SIMS~ARM,data=data)
+```
 
 
 ### Inferential  (Build model.1)
+```{r}
+summary(lmr)
+newdata=c(GRIP=94, ARM=88)
+```
+
 
 #### Predict at target point
+```{r}
+predictSIM = predict.lm(lmr, newdata=data.frame(GRIP = 94, ARM = 88))
+print(predictSIM)
+```
 
 
 #### scatterplot with model fit
-  
+```{r}
+plot(lmr)
+```
 
-## Model 2 SIM~GRIP
+
+## Model 2 SIM~GRIP 
 
 ### Now add in scatterplot
-
+```{r}
+plot(SIMS~ARM,data=data)
+grip =lm(SIMS~ARM,data=data)
+abline (grip)
+```
 
 ### Numerical results 
-
+```{r}
+cor(SIMS~ARM,data=data)
+```
 
 ### Inferential  (Build model.2)
-  
+```{r}
+summary(grip)
+newdata=c(GRIP=94, ARM=88)
+``` 
 
 #### predict model.2 at target point
+```{r}
+predictSIM = predict.lm(grip, newdata=data.frame(GRIP = 94, ARM = 88))
+print(predictSIM)
+```
+
 
 #### now add the model fit to our plot for model.2
-  
+```{r}
+plot(grip)
+```
 
 
-## Model 3 SIM~ARM+GRIP
+## Model 3 SIM~ARM+GRIP 
 
 ### Numerical results (cor)
+```{r}
+data2=lm(SIMS~ARM+GRIP, data+data)
+summary(data2)
+```
 
-`
   
 ### Inferential  (Build 2-dimentional model.3)
 
 #### predict model.3 at target point
+```{r}
+predict.lm(data2,)
+```
+
   
 
 ## Comparing nested models ANOVA Test
 
 ### Model.1 vs Model.3
+anova(lmr,data2)
 ### Model.2 vs Model.3
-
+anova(,data2)
 ## Informally compare Model.1 with model.2
 
