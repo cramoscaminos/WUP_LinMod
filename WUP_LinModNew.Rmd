@@ -37,14 +37,14 @@ lmr =lm(SIMS~ARM,data=data)
 abline (lmr)
 ```
 
-The scatter plot for SIMS~ARMS shows a positive linear correlation.
+The scatter plot is for model1 SIMS~ARMS. ARM is the X-Axis, and SIMS is the Y-Axis. The plot shows a positive linear correlation.
 
 ### Numerical results
 ```{r}
 cor(SIMS~ARM,data=data)
 ```
 
-The correlation is 0.6860  
+The correlation is 0.6860 the line is positive. 
 
 ### Inferential  (Build model.1)
 ```{r}
@@ -79,14 +79,14 @@ grip =lm(SIMS~GRIP,data=data)
 abline (grip)
 ```
   
-The scatter plot for SIM~GRIP shows a positive linear correlation. 
+The scatter plot shows GRIP on the X-axis and SIMS on the Y-Axis. for SIM~GRIP shows a positive linear correlation. 
 
 ### Numerical results 
 ```{r}
 cor(SIMS~GRIP,data=data)
 ```
 
-The correlation for SIMS~GRIP is 0.6398458 slightly smaller than the correlation between SIMS~ARM which is 0.686073. 
+The correlation for SIMS~GRIP is 0.6398458 slightly smaller than the correlation between SIMS~ARM which is 0.686073. Model1 is a better model 
 
 ### Inferential  (Build model.2)
 ```{r}
@@ -139,18 +139,19 @@ The target point is -5.2842
 ```{r}
 anova(lmr,data2)
 ```
+  
+The Residual Degrees of Freedom (Res. Df) are 145. The Residual Sum of Squares (RSS) add up to 217 errors were reduced by 29.45 there are less errors in model2. Therefore model 2 is the best model.  
 
 ### Model.2 vs Model.3
 ```{r}
 anova(grip,data2)
 ```
   
+The Residual Degree of Freedom (Res.Df) is 145. The Residual Sum of Squares (RSS) add up to  All the errors together add up to 243.07. The errors were reduced by 54.639. Model2 is a better model than model1 because more errors were corrected.
+  
 ## Informally compare Model.1 with model.2
 
-Model 1 and model2 appear similar in the positive slope direction for the Standardized Residual Normal Q-Q plot. The remaining plots appear to be closer to a zero slope.   
-The SIMS~GRIP correlation is 0.6398458 which is smaller than the SIMS~ARM correlation of 0.6860073 a difference of 0.0461615. 
-Both model1 and model2 have residuals degree of freedom of 145 
-
-Model1 has a residual sum of squares of 217.88. Model2  has a residual sum of squares  243.07. The difference is 25.19. From this I conclude that  Model1 has less errors is a better model than model2. 
+Model1 and model2 appear similar in that they are positive slope direction for the Standardized Residual Normal Q-Q plot. The remaining plots appear to be closer to a zero slope.   
+The SIMS~GRIP correlation is 0.6398458 which is smaller than the SIMS~ARM correlation of 0.6860073 a difference of 0.0461615. Both model1 and model2 have residuals degree of freedom of 145. Model1 has a residual sum of squares of 217.88. Model2  has a residual sum of squares  243.07. The difference is 25.19. 
 
 
